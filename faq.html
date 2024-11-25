@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - Laptop Sales and Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff6600;
+            font-size: 32px;
+        }
+
+        .faq-container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #ff6600;
+            margin-bottom: 10px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 10px;
+            background-color: #2f2f2f;
+            border-radius: 5px;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .faq-question:hover {
+            background-color: #ff6600;
+        }
+
+        .faq-question.active {
+            background-color: #ff6600;
+            color: black;
+        }
+
+        .link-section {
+            margin-top: 20px;
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .link-section p {
+            font-size: 16px;
+        }
+
+        .link-section a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+        .link-section a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Laptop Sales and Services</h1>
+</header>
+
+<div class="faq-container">
+    <h2>Frequently Asked Questions</h2>
+
+    <!-- FAQ 1 -->
+    <div class="faq-item">
+        <div class="faq-question">1. What is your return policy?</div>
+        <div class="faq-answer">
+            <p>We offer a 30-day return policy for all laptops. To qualify for a return, the product must be in its original, unused condition with all packaging and accessories. For more details, please visit our <a href="return-policy.html">Return Policy</a> page.</p>
+        </div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="faq-item">
+        <div class="faq-question">2. Where is your service center located?</div>
+        <div class="faq-answer">
+            <p>Our service center is located at: <strong>123 Tech Avenue, City, State</strong>. For more information or to request a repair, please visit our <a href="service-center.html">Service Center</a> page.</p>
+        </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="faq-item">
+        <div class="faq-question">3. How can I track my order?</div>
+        <div class="faq-answer">
+            <p>To track your order, simply enter your order number on the <a href="order-tracking.html">Order Tracking</a> page.</p>
+        </div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="faq-item">
+        <div class="faq-question">4. What payment methods do you accept?</div>
+        <div class="faq-answer">
+            <p>We accept various payment methods including Credit/Debit Cards, PayPal, and Bank Transfer. For a complete list of payment options, visit our <a href="payment-methods.html">Payment Methods</a> page.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Links Section -->
+<div class="link-section">
+    <p>If you need more information or assistance, please check the following pages:</p>
+    <ul>
+        <li><a href="return-policy.html">Return Policy</a></li>
+        <li><a href="service-center.html">Service Center</a></li>
+        <li><a href="order-tracking.html">Order Tracking</a></li>
+        <li><a href="payment-methods.html">Payment Methods</a></li>
+    </ul>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2024 Laptop Sales and Services. All rights reserved.</p>
+</footer>
+
+<script>
+    // Toggle the FAQ answers
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isActive = question.classList.contains('active');
+            
+            // Hide all answers
+            document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            
+            if (!isActive) {
+                // Show the clicked question's answer
+                answer.style.display = 'block';
+                question.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

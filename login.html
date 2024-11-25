@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Sale and Services Login</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            overflow: hidden;
+        }
+
+        .login-container {
+            width: 400px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-out;
+            transform: translateY(30px);
+        }
+
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 28px;
+            color: #fdbb2d;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        #login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        input {
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 2px solid #555;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        input:focus {
+            border-color: #fdbb2d;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        #login-btn {
+            background: linear-gradient(90deg, #f39c12, #fdbb2d);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        #login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(253, 187, 45, 0.4);
+        }
+
+        #error-message {
+            color: #f00;
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+            font-size: 14px;
+            display: none;
+            animation: bounce 1s infinite;
+        }
+
+        .error-emoji {
+            font-size: 18px;
+            margin-left: 5px;
+            animation: shake 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes shake {
+            from {
+                transform: rotate(-10deg);
+            }
+            to {
+                transform: rotate(10deg);
+            }
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Media Query for Responsiveness */
+        @media (max-width: 480px) {
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .login-container h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Laptop Sale and Services</h1>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        
+            <button id="login-btn" type="submit">Login</button>
+        </form>
+        <p id="error-message">
+            Invalid username or password
+            <span class="error-emoji">⚠️</span>
+            <span class="error-emoji">❌</span>
+        </p>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(loginForm);
+
+            try {
+                const response = await fetch('login.php', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.text();
+
+                if (result.trim() === 'Login successful!') {
+                    window.location.href = 'homepage.html'; // Redirect on success
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+</html>

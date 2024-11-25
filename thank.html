@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Review</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ff9900, #ffffff);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #ff9900;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .thank-you-icon {
+            font-size: 60px;
+            color: #ff9900;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            background-color: #ff9900;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" data-aos="fade-up">
+        <div class="thank-you-icon" data-aos="zoom-in">
+            &#128077; <!-- Thumbs Up Emoji -->
+        </div>
+        <h1>Thank You for Your Review, <span id="username"></span>!</h1>
+        <p>Your feedback helps us improve and provide better service. We appreciate your time and thoughts.</p>
+        <a href="review.html" class="cta-button" data-aos="fade-up" data-aos-delay="300">See More Reviews</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init();
+
+        // Retrieve the username from the query string and display it
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        document.getElementById('username').textContent = username;
+
+        // Set timeout to redirect to the home page after 5 seconds
+        setTimeout(function() {
+            window.location.href = "homepage.html"; // Replace with your homepage URL
+        }, 5000); // 5000ms = 5 seconds
+    </script>
+
+</body>
+</html>
